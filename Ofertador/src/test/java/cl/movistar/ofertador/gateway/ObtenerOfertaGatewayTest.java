@@ -57,7 +57,7 @@ public class ObtenerOfertaGatewayTest {
         solicitudOferta.setNumeroCelular(97084472);//hIBRIDO hermano de mauricio
         
 //        solicitudOferta.setNumeroCelular(89145500);
-        solicitudOferta.setVisualizacion("general");
+        solicitudOferta.setVisualizacion("SUGERIDA");
         boolean dummy = false;
         try{
         ObtenerOfertaGateway instance = new ObtenerOfertaGateway();
@@ -65,7 +65,6 @@ public class ObtenerOfertaGatewayTest {
         System.out.println(result.getRespuestaServicio().getCodigo());
         }catch(Exception e){
         	e.printStackTrace();
-        	
         }
     }
     

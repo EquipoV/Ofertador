@@ -143,36 +143,49 @@ public class ObtenerOfertaGateway {
 	private List<Oferta> flujoContencionObtenerOferta(
 			SolicitudOferta solicitudOferta) throws Exception,OfertadorException {
 
-		List<Oferta> ofertasMatrizIncompAplicadaGenerales = new ArrayList<Oferta>();
-		// Obtener ofertas sugeridas y contención (WS Unifica)
+		// Obtener ofertas sugeridas y contención (WS Bi)
 		List<Oferta> ofertasOfertasContencion = Helper
 				.getOfertaContencion(solicitudOferta);
 
-		// Unimos todas las listas en una.
-		if (ofertasOfertasContencion != null)
-			ofertasMatrizIncompAplicadaGenerales
-					.addAll(ofertasOfertasContencion);
-
-		return ofertasMatrizIncompAplicadaGenerales;
-
+		// Obtener las ofertas desde Parque y Bitacora de Recurrencia
+		List<Oferta> OfertasParqueYEnVuelo = Helper
+						.obtenerOfertasParqueBitacora(solicitudOferta
+								.getNumeroCelular());
+				
+		//Si no encuentra nada en Parque O En vuelo, devuelve las ofertas de Catálogo inmediatamente.
+		if(OfertasParqueYEnVuelo.size()==0){return ofertasOfertasContencion;}
+					
+		// Eliminar del listado de ofertas, todas las ofertas que el
+		// cliente tenga contratadas
+		List<Oferta> ofertasEliminadasContradasContencion = Helper
+				.eliminarOfertasContratadas(ofertasOfertasContencion,
+						OfertasParqueYEnVuelo);
+						
+	return ofertasEliminadasContradasContencion;
 	}
 
 	private List<Oferta> flujoSugeridaObtenerOferta(
 			SolicitudOferta solicitudOferta) throws Exception,OfertadorException {
-		List<Oferta> ofertasMatrizIncompAplicadaGenerales = new ArrayList<Oferta>();
-		// Obtener ofertas sugeridas (WS Unifica)
-
+		
+		// Obtener ofertas sugeridas (WS BI)
 		List<Oferta> ofertasOfertasSugeridas = Helper
 				.getOfertaSugerida(solicitudOferta);
 
-		// Unimos todas las listas en una.
-
-		if (ofertasOfertasSugeridas != null)
-			ofertasMatrizIncompAplicadaGenerales
-					.addAll(ofertasOfertasSugeridas);
-
-		return ofertasMatrizIncompAplicadaGenerales;
-
+		// Obtener las ofertas desde Parque y Bitacora de Recurrencia
+		List<Oferta> OfertasParqueYEnVuelo = Helper
+						.obtenerOfertasParqueBitacora(solicitudOferta
+								.getNumeroCelular());
+				
+		//Si no encuentra nada en Parque O En vuelo, devuelve las ofertas de Catálogo inmediatamente.
+		if(OfertasParqueYEnVuelo.size()==0){return ofertasOfertasSugeridas;}
+					
+		// Eliminar del listado de ofertas, todas las ofertas que el
+		// cliente tenga contratadas
+		List<Oferta> ofertasEliminadasContradasSugeridas = Helper
+				.eliminarOfertasContratadas(ofertasOfertasSugeridas,
+						OfertasParqueYEnVuelo);
+				
+		return ofertasEliminadasContradasSugeridas;
 	}
 
 	private List<Oferta> flujoGeneralObtenerOferta(
@@ -199,7 +212,7 @@ public class ObtenerOfertaGateway {
 		//Si no encuentra nada en Parque O En vuelo, devuelve las ofertas de Catálogo inmediatamente.
 		if(OfertasParqueYEnVuelo.size()==0){return ofertasGeneralesCatalogo;}
 		
-		List<Oferta> ofertasMatrizIncompAplicadaGenerales = null;	
+			
 		// Eliminar del listado de ofertas, todas las ofertas que el
 		// cliente tenga contratadas
 		List<Oferta> ofertasEliminadasContradasGenerales = Helper
@@ -216,7 +229,7 @@ public class ObtenerOfertaGateway {
 
 		// Aplicar matriz de incompatibilidad al listado de ofertas
 		// Generales
-		
+		List<Oferta> ofertasMatrizIncompAplicadaGenerales = null;
 		if (ofertasMatrizQAplicadaGenerales != null) {
 			ofertasMatrizIncompAplicadaGenerales = Helper
 					.aplicarMatrizDeIncompatibilidad(OfertasParqueYEnVuelo,
