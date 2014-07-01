@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<s0:definitions name="ConsultarDetalleAbonadoService" targetNamespace="http://osb.movistar.cl/" xmlns:s0="http://schemas.xmlsoap.org/wsdl/" xmlns:s1="http://osb.movistar.cl/" xmlns:s2="http://schemas.xmlsoap.org/wsdl/soap/">
+  <s0:types>
+    <xs:schema version="1.0" targetNamespace="http://osb.movistar.cl/" xmlns:tns="http://osb.movistar.cl/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="app_invoker" type="xs:string"/>
+      <xs:element name="getDetalleAbonado" type="tns:getDetalleAbonado"/>
+      <xs:element name="getDetalleAbonadoResponse" type="tns:getDetalleAbonadoResponse"/>
+      <xs:complexType name="getDetalleAbonado">
+        <xs:sequence>
+          <xs:element name="numCelular" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getDetalleAbonadoResponse">
+        <xs:sequence>
+          <xs:element name="return" type="tns:getDetalleVO" minOccurs="0"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getDetalleVO">
+        <xs:sequence>
+          <xs:element name="apellido1Usuario" type="xs:string" minOccurs="0"/>
+          <xs:element name="apellido2Usuario" type="xs:string" minOccurs="0"/>
+          <xs:element name="cargoBasico" type="xs:string" minOccurs="0"/>
+          <xs:element name="codCausaBaja" type="xs:string" minOccurs="0"/>
+          <xs:element name="codCliente" type="xs:int"/>
+          <xs:element name="codClienteDistribuidor" type="xs:int"/>
+          <xs:element name="codCuenta" type="xs:int"/>
+          <xs:element name="codModelo" type="xs:string" minOccurs="0"/>
+          <xs:element name="codSituacion" type="xs:string" minOccurs="0"/>
+          <xs:element name="codTecnologia" type="xs:string" minOccurs="0"/>
+          <xs:element name="codVendedor" type="xs:int"/>
+          <xs:element name="codciclo" type="xs:int"/>
+          <xs:element name="codigoPlan" type="xs:string" minOccurs="0"/>
+          <xs:element name="codigoRetorno" type="xs:int"/>
+          <xs:element name="descCausaBaja" type="xs:string" minOccurs="0"/>
+          <xs:element name="descFabricante" type="xs:string" minOccurs="0"/>
+          <xs:element name="descModVenta" type="xs:string" minOccurs="0"/>
+          <xs:element name="descPlan" type="xs:string" minOccurs="0"/>
+          <xs:element name="descTipoContrato" type="xs:string" minOccurs="0"/>
+          <xs:element name="diaFacturacion" type="xs:int"/>
+          <xs:element name="fechaAlta" type="xs:string" minOccurs="0"/>
+          <xs:element name="fechaAltaCentral" type="xs:string" minOccurs="0"/>
+          <xs:element name="fechaBaja" type="xs:string" minOccurs="0"/>
+          <xs:element name="fechaBajaCentral" type="xs:string" minOccurs="0"/>
+          <xs:element name="fechaFinContrato" type="xs:string" minOccurs="0"/>
+          <xs:element name="fechaProrroga" type="xs:string" minOccurs="0"/>
+          <xs:element name="listaBolsaAbonado" type="tns:bolsaAbonadoVO" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="mensajeRetorno" type="xs:string" minOccurs="0"/>
+          <xs:element name="mesesContrato" type="xs:int"/>
+          <xs:element name="nombreCliente" type="xs:string" minOccurs="0"/>
+          <xs:element name="nombreUsuario" type="xs:string" minOccurs="0"/>
+          <xs:element name="numAbonado" type="xs:int"/>
+          <xs:element name="numCelular" type="xs:int"/>
+          <xs:element name="numIdentidad" type="xs:string" minOccurs="0"/>
+          <xs:element name="numOrden" type="xs:int"/>
+          <xs:element name="numSerieInt" type="xs:int"/>
+          <xs:element name="numSerieStr" type="xs:string" minOccurs="0"/>
+          <xs:element name="primerApellido" type="xs:string" minOccurs="0"/>
+          <xs:element name="segundoApellido" type="xs:string" minOccurs="0"/>
+          <xs:element name="sexo" type="xs:string" minOccurs="0"/>
+          <xs:element name="situacionAbonado" type="xs:string" minOccurs="0"/>
+          <xs:element name="tipoAbonado" type="xs:string" minOccurs="0"/>
+          <xs:element name="tipoIdentidad" type="xs:string" minOccurs="0"/>
+          <xs:element name="tipoPlan" type="xs:string" minOccurs="0"/>
+          <xs:element name="valorCliente" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="bolsaAbonadoVO">
+        <xs:sequence>
+          <xs:element name="codServicio" type="xs:string" minOccurs="0"/>
+          <xs:element name="descUnidad" type="xs:string" minOccurs="0"/>
+          <xs:element name="fechaAltaServicio" type="xs:string" minOccurs="0"/>
+          <xs:element name="impTarifa" type="xs:float" minOccurs="0"/>
+          <xs:element name="indPlan" type="xs:string" minOccurs="0"/>
+          <xs:element name="numUnidades" type="xs:int"/>
+          <xs:element name="unidadesConsumidas" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </s0:types>
+  <s0:message name="getDetalleAbonado">
+    <s0:part element="s1:getDetalleAbonado" name="parameters"/>
+  </s0:message>
+  <s0:message name="getDetalleAbonado_HDR">
+    <s0:part element="s1:app_invoker" name="request_header"/>
+  </s0:message>
+  <s0:message name="getDetalleAbonadoResponse">
+    <s0:part element="s1:getDetalleAbonadoResponse" name="parameters"/>
+  </s0:message>
+  <s0:portType name="ConsultarDetalleAbonado">
+    <s0:operation name="getDetalleAbonado">
+      <s0:input message="s1:getDetalleAbonado"/>
+      <s0:output message="s1:getDetalleAbonadoResponse"/>
+    </s0:operation>
+  </s0:portType>
+  <s0:binding name="ConsultarDetalleAbonadoPortBinding" type="s1:ConsultarDetalleAbonado">
+    <s2:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <s0:operation name="getDetalleAbonado">
+      <s2:operation/>
+      <s0:input>
+        <s2:header message="s1:getDetalleAbonado_HDR" part="request_header" use="literal"/>
+        <s2:body use="literal"/>
+      </s0:input>
+      <s0:output>
+        <s2:body use="literal"/>
+      </s0:output>
+    </s0:operation>
+  </s0:binding>
+  <s0:service name="ConsultarDetalleAbonadoService">
+    <s0:port binding="s1:ConsultarDetalleAbonadoPortBinding" name="ConsultarDetalleAbonadoPort">
+      <s2:address location="http://osbpro:80/Abonado/ConsultaDetalleAbonado"/>
+    </s0:port>
+  </s0:service>
+</s0:definitions>

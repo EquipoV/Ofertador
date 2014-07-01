@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://services.ofertador.movistar.cl" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://services.ofertador.movistar.cl" xmlns:intf="http://services.ofertador.movistar.cl" xmlns:tns1="http://dto.ofertador.movistar.cl" xmlns:tns2="http://detalleoferta.dto.ofertador.movistar.cl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://services.ofertador.movistar.cl" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://detalleoferta.dto.ofertador.movistar.cl"/>
+   <import namespace="http://dto.ofertador.movistar.cl"/>
+   <element name="validarCompatibilidadEntreOfertas">
+    <complexType>
+     <sequence>
+      <element name="solicitudCompatibilidadOferta" type="tns1:SolicitudCompatibilidadOferta"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="validarCompatibilidadEntreOfertasResponse">
+    <complexType>
+     <sequence>
+      <element name="validarCompatibilidadEntreOfertasReturn" type="tns1:Response"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="validarFactibilidadVentaOtrosCanales">
+    <complexType>
+     <sequence>
+      <element name="solicitudFactibilidadVentaOtrosCanales" type="tns1:SolicitudFactibilidadVentaOtrosCanales"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="validarFactibilidadVentaOtrosCanalesResponse">
+    <complexType>
+     <sequence>
+      <element name="validarFactibilidadVentaOtrosCanalesReturn" type="tns1:Response"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="obtenerOfertas">
+    <complexType>
+     <sequence>
+      <element name="solicitudOferta" type="tns1:SolicitudOferta"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="obtenerOfertasResponse">
+    <complexType>
+     <sequence>
+      <element name="obtenerOfertasReturn" type="tns1:ResponseOfertas"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="ArrayOf_tns1_Oferta">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns1:Oferta"/>
+    </sequence>
+   </complexType>
+   <element name="obtenerDetalleOferta">
+    <complexType>
+     <sequence>
+      <element name="codigoOferta" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="obtenerDetalleOfertaResponse">
+    <complexType>
+     <sequence>
+      <element name="obtenerDetalleOfertaReturn" type="tns1:ResponseDetalleOferta"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="ArrayOf_tns2_Canal">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns2:Canal"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOf_tns2_Precio">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns2:Precio"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOf_tns2_CaracteristicaProducto">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns2:CaracteristicaProducto"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOf_tns2_Producto">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns2:Producto"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOf_tns2_SegmentoMercado">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns2:SegmentoMercado"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://dto.ofertador.movistar.cl" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://detalleoferta.dto.ofertador.movistar.cl"/>
+   <import namespace="http://services.ofertador.movistar.cl"/>
+   <complexType name="SolicitudCompatibilidadOferta">
+    <sequence>
+     <element name="familiaridadOferta1" nillable="true" type="xsd:string"/>
+     <element name="familiaridadOferta2" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="RespuestaServicio">
+    <sequence>
+     <element name="codigo" type="xsd:int"/>
+     <element name="mensaje" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="Response">
+    <sequence>
+     <element name="respuesta" nillable="true" type="xsd:string"/>
+     <element name="respuestaServicio" nillable="true" type="tns1:RespuestaServicio"/>
+    </sequence>
+   </complexType>
+   <complexType name="SolicitudFactibilidadVentaOtrosCanales">
+    <sequence>
+     <element name="idRed" nillable="true" type="xsd:string"/>
+     <element name="numeroCelular" type="xsd:int"/>
+    </sequence>
+   </complexType>
+   <complexType name="SolicitudOferta">
+    <sequence>
+     <element name="canal" nillable="true" type="xsd:string"/>
+     <element name="familia" nillable="true" type="xsd:string"/>
+     <element name="numeroCelular" type="xsd:int"/>
+     <element name="visualizacion" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="Oferta">
+    <sequence>
+     <element name="canal" nillable="true" type="xsd:string"/>
+     <element name="codigoOferta" nillable="true" type="xsd:string"/>
+     <element name="codigoServicioSuplementario" nillable="true" type="xsd:string"/>
+     <element name="descripcion" nillable="true" type="xsd:string"/>
+     <element name="estado" nillable="true" type="xsd:string"/>
+     <element name="familia" nillable="true" type="xsd:string"/>
+     <element name="familiaridad" nillable="true" type="xsd:string"/>
+     <element name="fechaInicio" nillable="true" type="xsd:string"/>
+     <element name="fechaTermino" nillable="true" type="xsd:string"/>
+     <element name="id" type="xsd:int"/>
+     <element name="idRed" nillable="true" type="xsd:string"/>
+     <element name="nombre" nillable="true" type="xsd:string"/>
+     <element name="tipoContrato" nillable="true" type="xsd:string"/>
+     <element name="tipoVigencia" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="ResponseOfertas">
+    <sequence>
+     <element name="ofertas" nillable="true" type="impl:ArrayOf_tns1_Oferta"/>
+     <element name="respuestaServicio" nillable="true" type="tns1:RespuestaServicio"/>
+    </sequence>
+   </complexType>
+   <complexType name="ResponseDetalleOferta">
+    <sequence>
+     <element name="detalleOferta" nillable="true" type="tns2:DetalleOferta"/>
+     <element name="respuestaServicio" nillable="true" type="tns1:RespuestaServicio"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://detalleoferta.dto.ofertador.movistar.cl" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://dto.ofertador.movistar.cl"/>
+   <import namespace="http://services.ofertador.movistar.cl"/>
+   <complexType name="Canal">
+    <sequence>
+     <element name="descripcion" nillable="true" type="xsd:string"/>
+     <element name="idCanal" type="xsd:int"/>
+     <element name="nombre" nillable="true" type="xsd:string"/>
+     <element name="nombreOferta" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="Precio">
+    <sequence>
+     <element name="canales" nillable="true" type="impl:ArrayOf_tns2_Canal"/>
+     <element name="codigoServicioSuplementario" nillable="true" type="xsd:string"/>
+     <element name="codigoTasacion" nillable="true" type="xsd:string"/>
+     <element name="conceptoFacturacion" type="xsd:int"/>
+     <element name="descuentoOferta" nillable="true" type="xsd:string"/>
+     <element name="nombreFacturacion" nillable="true" type="xsd:string"/>
+     <element name="precioOferta" type="xsd:int"/>
+     <element name="tipoMoneda" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="CaracteristicaProducto">
+    <sequence>
+     <element name="codigoCaracteristicaProducto" nillable="true" type="xsd:string"/>
+     <element name="descripcion" nillable="true" type="xsd:string"/>
+     <element name="nombre" nillable="true" type="xsd:string"/>
+     <element name="tecnologia" nillable="true" type="xsd:string"/>
+     <element name="tipoUnidad" nillable="true" type="xsd:string"/>
+     <element name="unidad" nillable="true" type="xsd:string"/>
+     <element name="valocidadMaxima" nillable="true" type="xsd:string"/>
+     <element name="velocidadReducida" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="Producto">
+    <sequence>
+     <element name="caracteristicasProducto" nillable="true" type="impl:ArrayOf_tns2_CaracteristicaProducto"/>
+     <element name="codigoProducto" nillable="true" type="xsd:string"/>
+     <element name="estado" nillable="true" type="xsd:string"/>
+     <element name="nombre" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="SegmentoMercado">
+    <sequence>
+     <element name="descripcion" nillable="true" type="xsd:string"/>
+     <element name="idSegmentoMercado" type="xsd:int"/>
+     <element name="nombre" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="DetalleOferta">
+    <sequence>
+     <element name="cantidadPuntos" type="xsd:int"/>
+     <element name="codigoOferta" nillable="true" type="xsd:string"/>
+     <element name="codigoOfertaRed" nillable="true" type="xsd:string"/>
+     <element name="consumo" nillable="true" type="xsd:string"/>
+     <element name="descripcion" nillable="true" type="xsd:string"/>
+     <element name="estado" nillable="true" type="xsd:string"/>
+     <element name="familia" nillable="true" type="xsd:string"/>
+     <element name="familiaridad" nillable="true" type="xsd:string"/>
+     <element name="fechaInicio" nillable="true" type="xsd:string"/>
+     <element name="fechaTermino" nillable="true" type="xsd:string"/>
+     <element name="horarioVenta" nillable="true" type="xsd:string"/>
+     <element name="idRed" nillable="true" type="xsd:string"/>
+     <element name="idUsuario" type="xsd:int"/>
+     <element name="idValidacion" type="xsd:int"/>
+     <element name="nombre" nillable="true" type="xsd:string"/>
+     <element name="precios" nillable="true" type="impl:ArrayOf_tns2_Precio"/>
+     <element name="productos" nillable="true" type="impl:ArrayOf_tns2_Producto"/>
+     <element name="restricciones" nillable="true" type="xsd:string"/>
+     <element name="segmentosMercado" nillable="true" type="impl:ArrayOf_tns2_SegmentoMercado"/>
+     <element name="subFamilia" nillable="true" type="xsd:string"/>
+     <element name="tipoCargo" nillable="true" type="xsd:string"/>
+     <element name="tipoDestino" nillable="true" type="xsd:string"/>
+     <element name="tipoOferta" nillable="true" type="xsd:string"/>
+     <element name="tipoVigencia" nillable="true" type="xsd:string"/>
+     <element name="tipoVisualizacion" nillable="true" type="xsd:string"/>
+     <element name="validacionRed" nillable="true" type="xsd:string"/>
+     <element name="valorCliente" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="obtenerDetalleOfertaResponse">
+
+      <wsdl:part element="impl:obtenerDetalleOfertaResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="validarFactibilidadVentaOtrosCanalesRequest">
+
+      <wsdl:part element="impl:validarFactibilidadVentaOtrosCanales" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="validarFactibilidadVentaOtrosCanalesResponse">
+
+      <wsdl:part element="impl:validarFactibilidadVentaOtrosCanalesResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="validarCompatibilidadEntreOfertasRequest">
+
+      <wsdl:part element="impl:validarCompatibilidadEntreOfertas" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="validarCompatibilidadEntreOfertasResponse">
+
+      <wsdl:part element="impl:validarCompatibilidadEntreOfertasResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerOfertasRequest">
+
+      <wsdl:part element="impl:obtenerOfertas" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerOfertasResponse">
+
+      <wsdl:part element="impl:obtenerOfertasResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerDetalleOfertaRequest">
+
+      <wsdl:part element="impl:obtenerDetalleOferta" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="OfertadorImpl">
+
+      <wsdl:operation name="validarCompatibilidadEntreOfertas">
+
+         <wsdl:input message="impl:validarCompatibilidadEntreOfertasRequest" name="validarCompatibilidadEntreOfertasRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:validarCompatibilidadEntreOfertasResponse" name="validarCompatibilidadEntreOfertasResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="validarFactibilidadVentaOtrosCanales">
+
+         <wsdl:input message="impl:validarFactibilidadVentaOtrosCanalesRequest" name="validarFactibilidadVentaOtrosCanalesRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:validarFactibilidadVentaOtrosCanalesResponse" name="validarFactibilidadVentaOtrosCanalesResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerOfertas">
+
+         <wsdl:input message="impl:obtenerOfertasRequest" name="obtenerOfertasRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:obtenerOfertasResponse" name="obtenerOfertasResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerDetalleOferta">
+
+         <wsdl:input message="impl:obtenerDetalleOfertaRequest" name="obtenerDetalleOfertaRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:obtenerDetalleOfertaResponse" name="obtenerDetalleOfertaResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="OfertadorImplSoapBinding" type="impl:OfertadorImpl">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="validarCompatibilidadEntreOfertas">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="validarCompatibilidadEntreOfertasRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="validarCompatibilidadEntreOfertasResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="validarFactibilidadVentaOtrosCanales">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="validarFactibilidadVentaOtrosCanalesRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="validarFactibilidadVentaOtrosCanalesResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerOfertas">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="obtenerOfertasRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="obtenerOfertasResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerDetalleOferta">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="obtenerDetalleOfertaRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="obtenerDetalleOfertaResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="OfertadorImplService">
+
+      <wsdl:port binding="impl:OfertadorImplSoapBinding" name="OfertadorImpl">
+
+         <wsdlsoap:address location="http://localhost:8080/Ofertador/services/OfertadorImpl"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

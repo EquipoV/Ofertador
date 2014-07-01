@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions
+	targetNamespace="http://midrange.telefonica.com/queryCatalogAppRulesService"
+	xmlns:imports="http://midrange.telefonica.com/queryCatalogAppRulesService/types"
+	xmlns:tns="http://midrange.telefonica.com/queryCatalogAppRulesService"
+	xmlns="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<types>
+		<xsd:schema
+			targetNamespace="http://midrange.telefonica.com/queryCatalogAppRulesService/types"
+			xmlns:tnsType="http://midrange.telefonica.com/queryCatalogAppRulesService/types"
+			elementFormDefault="qualified"
+			xmlns:soap-env="http://schemas.xmlsoap.org/soap/envelope/" >
+			
+			<!-- ######## INICIO definición esquemas ######## -->
+
+			<!-- Tipo Complejo para REQUEST del servicio -->
+			<xsd:complexType name="queryCatalogAppRulesRequest">
+				<xsd:sequence>
+					<!-- Lista de Familiaridad de Ofertas a consultar su Incompatibilidad -->
+					<xsd:element maxOccurs="unbounded" minOccurs="1" name="incompatibleProductsOrigin" type="tnsType:IncompatibleProductsOrigin"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<!-- Tipo Complejo para REQUEST del servicio -->
+
+			<!-- Inicio: Listado de Familiaridades Origen -->
+			<xsd:complexType name="IncompatibleProductsOrigin">
+				<xsd:sequence>
+					<xsd:element name="nameIncompatibleProducts">
+						<xsd:simpleType>
+						    <xsd:restriction base="xsd:string">
+							    <xsd:minLength value="1"/>
+								<xsd:maxLength value="60"/>
+						    </xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+			<!-- Fin: Listado de Familiaridades Origen -->
+			
+			<!-- Tipo Complejo para RESPONSE del servicio -->
+			<xsd:complexType name="queryCatalogAppRulesResponse">
+				<xsd:sequence>
+					<!-- Codigo de Retorno -->
+					<xsd:element name="returnCode">
+						<xsd:simpleType>
+							<xsd:restriction base="xsd:string">
+								<xsd:minLength value="1"/>
+								<xsd:maxLength value="9"/>
+							</xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+					
+					<!-- Descripcion del mensaje de retorno -->
+					<xsd:element name="returnDescription">
+						<xsd:simpleType>
+							<xsd:restriction base="xsd:string">
+								<xsd:minLength value="1"/>
+								<xsd:maxLength value="100"/>
+							</xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+					
+					<!-- Lista de Familiaridades Incompatibles -->
+					<xsd:element maxOccurs="unbounded" minOccurs="0" name="incompatibleProductsDestiny" type="tnsType:IncompatibleProductsDestiny"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<!-- Tipo Complejo para RESPONSE del servicio -->
+			
+			<!-- Inicio: Listado de Familiaridades Destino -->
+			<xsd:complexType name="IncompatibleProductsDestiny">
+				<xsd:sequence>
+					<xsd:element name="idIncompatibleProducts">
+						<xsd:simpleType>
+						    <xsd:restriction base="xsd:int">
+							    <xsd:minExclusive value="0"/>
+								<xsd:maxInclusive value="999999999"/>
+						    </xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+					<xsd:element name="nameIncompatibleProducts">
+						<xsd:simpleType>
+						    <xsd:restriction base="xsd:string">
+							    <xsd:minLength value="1"/>
+								<xsd:maxLength value="60"/>
+						    </xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+			<!-- Fin: Listado de Familiaridades Destino -->
+			
+			
+			<!-- ######## FIN definición esquemas ######## -->
+
+			<!-- Definicion Request -->
+			<xsd:element name="queryCatalogAppRulesRequest" nillable="true" type="tnsType:queryCatalogAppRulesRequest"/>
+			<!-- Definicion Request -->
+
+			<!-- Definicion Response -->
+			<xsd:element name="queryCatalogAppRulesResponse" nillable="true" type="tnsType:queryCatalogAppRulesResponse"/>
+			<!-- Definicion Response -->
+
+		</xsd:schema>
+
+	</types>
+
+	<message name="queryCatalogAppRulesRequestMsg">
+		<part element="imports:queryCatalogAppRulesRequest" name="queryCatalogAppRulesRequestParameter"/>
+	</message>
+	<message name="queryCatalogAppRulesResponseMsg">
+		<part element="imports:queryCatalogAppRulesResponse" name="queryCatalogAppRulesResponseParameter"/>
+	</message>
+
+	<portType name="queryCatalogAppRulesPortType">
+		<operation name="queryCatalogAppRules">
+			<input message="tns:queryCatalogAppRulesRequestMsg"/>
+			<output message="tns:queryCatalogAppRulesResponseMsg"/>
+		</operation>
+	</portType>
+
+	<binding name="queryCatalogAppRulesBinding" type="tns:queryCatalogAppRulesPortType">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="queryCatalogAppRules">
+			<soap:operation soapAction="http://midrange.telefonica.com/queryCatalogAppRulesService/queryCatalogAppRules" style="document"/>
+			<input>
+				<soap:body parts="queryCatalogAppRulesRequestParameter" use="literal"/>
+			</input>
+			<output>
+				<soap:body parts="queryCatalogAppRulesResponseParameter" use="literal"/>
+			</output>
+		</operation>
+	</binding>
+
+	<service name="queryCatalogAppRulesService">
+		<port binding="tns:queryCatalogAppRulesBinding" name="queryCatalogAppRules">
+			<soap:address location="http://localhost:8080/QueryCatalogAppRulesWEB/services/queryCatalogAppRules"/>
+		</port>
+	</service>
+
+</definitions>

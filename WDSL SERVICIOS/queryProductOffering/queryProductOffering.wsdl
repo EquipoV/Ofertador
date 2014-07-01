@@ -1,0 +1,542 @@
+<?xml version="1.0" encoding="UTF-8"?><definitions targetNamespace="http://midrange.telefonica.com/queryproductofferingservice" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:imports="http://midrange.telefonica.com/queryproductofferingservice/types" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:tns="http://midrange.telefonica.com/queryproductofferingservice" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<types>
+		<xsd:schema elementFormDefault="qualified" targetNamespace="http://midrange.telefonica.com/queryproductofferingservice/types" xmlns:soap-env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tnsType="http://midrange.telefonica.com/queryproductofferingservice/types">
+			
+			<!-- ######## INICIO definicion esquemas ######## -->
+
+			<!-- INICIO: Tipo Complejo para REQUEST del servicio -->
+			<xsd:complexType name="QueryOfferingRequest">
+				<xsd:sequence>
+					<!-- Identificador de la Oferta) -->
+					<xsd:element name="codOffering">
+						<xsd:simpleType>
+							<xsd:restriction base="xsd:string">
+								<xsd:minLength value="1"/>
+								<xsd:maxLength value="20"/>
+							</xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+	            </xsd:sequence>
+			 </xsd:complexType>
+			 
+			 <!-- FIN: Tipo Complejo para REQUEST del servicio -->
+			 
+			 <!-- INICIO: Tipo Complejo para RESPONSE del servicio -->
+			 <xsd:complexType name="QueryOfferingResponse">
+			 	<xsd:sequence>			
+					<!-- Codigo de retorno -->
+					<xsd:element name="returnCode">
+						<xsd:simpleType>
+							<xsd:restriction base="xsd:string">
+								<xsd:minLength value="1"/>
+								<xsd:maxLength value="9"/>
+							</xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+					
+					<!-- Descripcion del mensaje de retorno -->
+					<xsd:element name="returnDescription">
+						<xsd:simpleType>
+							<xsd:restriction base="xsd:string">
+								<xsd:minLength value="1"/>
+								<xsd:maxLength value="100"/>
+							</xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+					
+					<!-- Detalle configuracion de la Oferta -->
+					<xsd:element maxOccurs="1" minOccurs="0" name="productOffering" type="tnsType:ProductOffering"/>
+	            </xsd:sequence>
+			 </xsd:complexType> 
+		    <!-- FIN: Tipo Complejo para RESPONSE del servicio -->
+
+			
+		    <!-- Response Detalle Configuracion de la Oferta -->
+			<!--INICIO: Datos de la Oferta -->
+			<xsd:complexType name="ProductOffering">
+				<xsd:sequence>
+					<xsd:element name="codOffering">
+						<xsd:simpleType>
+						    <xsd:restriction base="xsd:string">
+							    <xsd:minLength value="0"/>
+								<xsd:maxLength value="20"/>
+						    </xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+					<xsd:element name="name">
+						<xsd:simpleType>
+						    <xsd:restriction base="xsd:string">
+							    <xsd:minLength value="0"/>
+								<xsd:maxLength value="150"/>
+						    </xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+					<xsd:element name="description">
+						<xsd:simpleType>
+						    <xsd:restriction base="xsd:string">
+								<xsd:minLength value="0"/>
+								<xsd:maxLength value="100"/>
+						    </xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+					<xsd:element name="status">
+						<xsd:simpleType>
+						    <xsd:restriction base="xsd:string">
+							    <xsd:minLength value="0"/>
+								<xsd:maxLength value="30"/>
+						    </xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+                    <xsd:element name="startDateTime">
+						<xsd:simpleType>
+						    <xsd:restriction base="xsd:string">
+								<xsd:minLength value="0"/>
+								<xsd:maxLength value="10"/>
+						    </xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>  
+				    <xsd:element name="endDateTime">
+						<xsd:simpleType>
+						    <xsd:restriction base="xsd:string">
+								<xsd:minLength value="0"/>
+								<xsd:maxLength value="10"/>
+						    </xsd:restriction>
+						</xsd:simpleType>
+				    </xsd:element>   
+				    <xsd:element name="idUser">
+						<xsd:simpleType>
+						    <xsd:restriction base="xsd:int">
+								<xsd:minInclusive value="0"/>
+							    <xsd:maxInclusive value="999999999"/>
+						    </xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+					<xsd:element name="customerValue">
+						<xsd:simpleType>
+						  <xsd:restriction base="xsd:string">
+								<xsd:minLength value="0"/>
+								<xsd:maxLength value="30"/>
+						    </xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+					<xsd:element name="visualizationType">
+						<xsd:simpleType>
+						  <xsd:restriction base="xsd:string">
+								<xsd:minLength value="0"/>
+								<xsd:maxLength value="30"/>
+						    </xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+					<xsd:element name="typeOffering">
+						<xsd:simpleType>
+						  <xsd:restriction base="xsd:string">
+								<xsd:minLength value="0"/>
+								<xsd:maxLength value="30"/>
+						    </xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+					<xsd:element name="typeOfCharge">
+						<xsd:simpleType>
+						  <xsd:restriction base="xsd:string">
+								<xsd:minLength value="0"/>
+								<xsd:maxLength value="30"/>
+						    </xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+					<xsd:element name="manyPoints">
+						<xsd:simpleType>
+						    <xsd:restriction base="xsd:int">
+								<xsd:minInclusive value="0"/>
+							    <xsd:maxInclusive value="999999999"/>
+						    </xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+					<xsd:element name="idValidation">
+						<xsd:simpleType>
+						    <xsd:restriction base="xsd:int">
+								<xsd:minInclusive value="0"/>
+							    <xsd:maxInclusive value="999999999"/>
+						    </xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+				
+					   <xsd:element name="validationNetwork">
+						<xsd:simpleType>
+						    <xsd:restriction base="xsd:string">
+							    <xsd:minLength value="0"/>
+								<xsd:maxLength value="1"/>
+						    </xsd:restriction>
+						</xsd:simpleType>
+				    </xsd:element>
+				    <xsd:element name="idNetwork">
+						<xsd:simpleType>
+						    <xsd:restriction base="xsd:string">
+							    <xsd:minLength value="0"/>
+								<xsd:maxLength value="20"/>
+						    </xsd:restriction>
+						</xsd:simpleType>
+				    </xsd:element>
+				    <xsd:element name="networkCodeOffer">
+						<xsd:simpleType>
+						    <xsd:restriction base="xsd:string">
+							    <xsd:minLength value="0"/>
+								<xsd:maxLength value="20"/>
+						    </xsd:restriction>
+						</xsd:simpleType>
+				    </xsd:element>
+		    	    <xsd:element name="productOfferingFamily">
+						<xsd:simpleType>
+						    <xsd:restriction base="xsd:string">
+							    <xsd:minLength value="0"/>
+								<xsd:maxLength value="30"/>
+						    </xsd:restriction>
+						</xsd:simpleType>
+				    </xsd:element> 	
+				    <xsd:element name="productOfferingSubFamily">
+						<xsd:simpleType>
+						    <xsd:restriction base="xsd:string">
+							    <xsd:minLength value="0"/>
+								<xsd:maxLength value="30"/>
+						    </xsd:restriction>
+						</xsd:simpleType>
+				    </xsd:element> 
+				    <xsd:element name="familiarityType">
+						<xsd:simpleType>
+						    <xsd:restriction base="xsd:string">
+							    <xsd:minLength value="0"/>
+								<xsd:maxLength value="60"/>
+						    </xsd:restriction>
+						</xsd:simpleType>
+				    </xsd:element>
+				    <xsd:element name="destinationType">
+						<xsd:simpleType>
+							<xsd:restriction base="xsd:string">
+								<xsd:minLength value="0"/>
+								<xsd:maxLength value="30"/>
+							</xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+					<xsd:element name="scheduleType">
+						<xsd:simpleType>
+							<xsd:restriction base="xsd:string">
+								<xsd:minLength value="0"/>
+								<xsd:maxLength value="200"/>
+							</xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+				    <xsd:element name="lifeType">
+						<xsd:simpleType>
+							<xsd:restriction base="xsd:string">
+								<xsd:minLength value="0"/>
+								<xsd:maxLength value="30"/>
+							</xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+				  	<xsd:element name="consumption">
+						<xsd:simpleType>
+							<xsd:restriction base="xsd:string">
+								<xsd:minLength value="0"/>
+								<xsd:maxLength value="500"/>
+							</xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+				 	<xsd:element name="restrictions">
+						<xsd:simpleType>
+							<xsd:restriction base="xsd:string">
+								<xsd:minLength value="0"/>
+								<xsd:maxLength value="500"/>
+							</xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+					
+					<!--Datos Producto de la Oferta -->
+					<xsd:element maxOccurs="unbounded" minOccurs="0" name="productSpecification" type="tnsType:ProductSpecification"/>
+					<!--Datos Precios -->
+					<xsd:element maxOccurs="unbounded" minOccurs="0" name="price" type="tnsType:Price"/> 
+					<!--Datos Segmento de Mercado de la Oferta -->
+					<xsd:element maxOccurs="unbounded" minOccurs="0" name="marketSegment" type="tnsType:MarketSegment"/>
+				</xsd:sequence>
+			</xsd:complexType>			
+			<!--FIN: Datos de la Oferta -->
+									
+			<!-- Response Listado de Productos de la Oferta -->
+			<xsd:complexType name="ProductSpecification">
+				<xsd:sequence>
+					<xsd:element name="codProduct">
+						<xsd:simpleType>
+						    <xsd:restriction base="xsd:string">
+							    <xsd:minLength value="0"/>
+								<xsd:maxLength value="20"/>
+						    </xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+					<xsd:element name="name">
+						<xsd:simpleType>
+							<xsd:restriction base="xsd:string">
+								<xsd:minLength value="0"/>
+								<xsd:maxLength value="100"/>
+							</xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+				    <xsd:element name="status">
+						<xsd:simpleType>
+						    <xsd:restriction base="xsd:string">
+							    <xsd:minLength value="0"/>
+								<xsd:maxLength value="30"/>
+						    </xsd:restriction>
+						</xsd:simpleType>
+				    </xsd:element> 
+             
+				    <!--Datos Caracteristicas del Producto de la Oferta -->
+					<xsd:element maxOccurs="unbounded" minOccurs="0" name="productSpecificationCharacteristic" type="tnsType:ProductSpecificationCharacteristic"/>
+				</xsd:sequence>
+			</xsd:complexType>	
+			
+			<!-- Response Listado de Características -->
+			<xsd:complexType name="ProductSpecificationCharacteristic">
+				<xsd:sequence>
+					<xsd:element name="codCharacteristic">
+						<xsd:simpleType>
+						     <xsd:restriction base="xsd:string">
+							    <xsd:minLength value="0"/>
+								<xsd:maxLength value="20"/> 
+						    </xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+					<xsd:element name="name">
+						<xsd:simpleType>
+						    <xsd:restriction base="xsd:string">
+							    <xsd:minLength value="0"/>
+								<xsd:maxLength value="30"/>  
+						    </xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+					<xsd:element name="description">
+						<xsd:simpleType>
+							<xsd:restriction base="xsd:string">
+								<xsd:minLength value="0"/>
+								<xsd:maxLength value="100"/>	
+							</xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>          
+					<xsd:element name="technology">
+						<xsd:simpleType>
+						    <xsd:restriction base="xsd:string">
+							    <xsd:minLength value="0"/>
+								<xsd:maxLength value="30"/>  
+						    </xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+					<xsd:element name="typeUnit">
+						<xsd:simpleType>
+						    <xsd:restriction base="xsd:string">
+							    <xsd:minLength value="0"/>
+								<xsd:maxLength value="30"/>  
+						    </xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+					<xsd:element name="unit">
+						<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+								<xsd:minLength value="0"/>
+								<xsd:maxLength value="50"/>
+							</xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+					<xsd:element name="maximumSpeed">
+						<xsd:simpleType>
+							<xsd:restriction base="xsd:string">
+								<xsd:minLength value="0"/>
+								<xsd:maxLength value="30"/>
+							</xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+					<xsd:element name="reducedSpeed">
+						<xsd:simpleType>
+							<xsd:restriction base="xsd:string">
+								<xsd:minLength value="0"/>
+								<xsd:maxLength value="30"/>
+							</xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+				</xsd:sequence>
+	        </xsd:complexType>
+	        	       						  
+			<!-- Response Listado de Precios -->
+			<xsd:complexType name="Price">
+				<xsd:sequence>
+				   <xsd:element name="supplementaryService">
+						<xsd:simpleType>
+						    <xsd:restriction base="xsd:string">
+							    <xsd:minLength value="0"/>
+								<xsd:maxLength value="30"/>
+						    </xsd:restriction>
+						</xsd:simpleType>
+				    </xsd:element>
+					<xsd:element name="price">
+						<xsd:simpleType>
+						    <xsd:restriction base="xsd:int">
+								<xsd:minInclusive value="0"/>
+							    <xsd:maxInclusive value="999999999"/>
+						    </xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+					<xsd:element name="billingName">
+						<xsd:simpleType>
+						  <xsd:restriction base="xsd:string">
+								<xsd:minLength value="0"/>
+								<xsd:maxLength value="30"/>
+						    </xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+					<xsd:element name="billableConcept">
+						<xsd:simpleType>
+						    <xsd:restriction base="xsd:int">
+								<xsd:minInclusive value="0"/>
+							    <xsd:maxInclusive value="999999999"/>
+						    </xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+					<xsd:element name="appraisalCode">
+						<xsd:simpleType>
+						  <xsd:restriction base="xsd:string">
+								<xsd:minLength value="0"/>
+								<xsd:maxLength value="20"/>
+						    </xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+					<xsd:element name="offerDiscount">
+						<xsd:simpleType>
+						     <xsd:restriction base="xsd:string">
+								<xsd:minLength value="0"/>
+								<xsd:maxLength value="100"/>
+						    </xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+					<xsd:element name="moneyType">
+						<xsd:simpleType>
+						  <xsd:restriction base="xsd:string">
+								<xsd:minLength value="0"/>
+								<xsd:maxLength value="80"/>
+						    </xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+					<!--Datos Canal -->
+					<xsd:element maxOccurs="unbounded" minOccurs="0" name="channel" type="tnsType:Channel"/>
+				</xsd:sequence>
+			</xsd:complexType>
+	
+			<!-- Response Listado de Canales -->
+			<xsd:complexType name="Channel">
+				<xsd:sequence>
+					<xsd:element name="id">
+						<xsd:simpleType>
+						    <xsd:restriction base="xsd:int">
+							    <xsd:minInclusive value="0"/>
+								<xsd:maxInclusive value="999999999"/>
+						    </xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+					<xsd:element name="name">
+						<xsd:simpleType>
+						    <xsd:restriction base="xsd:string">
+							    <xsd:minLength value="0"/>
+								<xsd:maxLength value="30"/>
+						    </xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+					<xsd:element name="description">
+						<xsd:simpleType>
+						    <xsd:restriction base="xsd:string">
+							    <xsd:minLength value="0"/>
+								<xsd:maxLength value="100"/>
+						    </xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element> 
+					<xsd:element name="nameOffering">
+						<xsd:simpleType>
+						    <xsd:restriction base="xsd:string">
+							    <xsd:minLength value="0"/>
+								<xsd:maxLength value="150"/>
+						    </xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+
+			
+			<!-- Response Listado del segmento de mercado -->
+			<xsd:complexType name="MarketSegment">
+				<xsd:sequence>
+					<xsd:element name="id">
+						<xsd:simpleType>
+						    <xsd:restriction base="xsd:int">
+							    <xsd:minInclusive value="0"/>
+								<xsd:maxInclusive value="999999999"/>
+						    </xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+					<xsd:element name="name">
+						<xsd:simpleType>
+						    <xsd:restriction base="xsd:string">
+							    <xsd:minLength value="0"/>
+								<xsd:maxLength value="30"/>
+						    </xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+					<xsd:element name="description">
+						<xsd:simpleType>
+						    <xsd:restriction base="xsd:string">
+							   <xsd:minLength value="0"/>
+							   <xsd:maxLength value="100"/>
+						    </xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:complexType> 
+			<!-- ######## FIN definicion esquemas ######## -->
+
+			<!-- Definicion Request -->
+			<xsd:element name="queryProductOfferingRequest" nillable="true" type="tnsType:QueryOfferingRequest"/>
+			<!-- Definicion Request -->
+
+			<!-- Definicion Response -->
+			<xsd:element name="queryProductOfferingResponse" nillable="true" type="tnsType:QueryOfferingResponse"/>
+			<!-- Definicion Response -->
+		</xsd:schema>
+	</types>
+
+	<message name="queryProductOfferingRequestMsg">
+		<part element="imports:queryProductOfferingRequest" name="queryProductOfferingRequestParameter"/>
+	</message>
+	<message name="queryProductOfferingResponseMsg">
+		<part element="imports:queryProductOfferingResponse" name="queryProductOfferingResponseParameter"/>
+	</message>
+	
+	<portType name="queryProductOfferingPortType">
+		<operation name="queryProductOffering">
+			<input message="tns:queryProductOfferingRequestMsg"/>
+			<output message="tns:queryProductOfferingResponseMsg"/>
+		</operation>
+	</portType>
+
+	<binding name="queryProductOfferingBinding" type="tns:queryProductOfferingPortType">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="queryProductOffering">
+			<soap:operation soapAction="http://midrange.telefonica.com/queryproductofferingservice/queryProductOffering" style="document"/>
+			<input>
+				<soap:body parts="queryProductOfferingRequestParameter" use="literal"/>
+			</input>
+			<output>
+				<soap:body parts="queryProductOfferingResponseParameter" use="literal"/>
+			</output>
+		</operation>
+	</binding>
+
+	<service name="queryproductofferingservice">
+		<port binding="tns:queryProductOfferingBinding" name="queryProductOffering">
+			<soap:address location="http://localhost:9080/QueryProductOfferingWEB/services/queryProductOffering"/>
+		</port>
+	</service>
+
+</definitions>

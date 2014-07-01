@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://ws.services.telefonica.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://ws.services.telefonica.com" xmlns:intf="http://ws.services.telefonica.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://ws.services.telefonica.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="actualizaPrecioFacturable">
+    <complexType>
+     <sequence>
+      <element name="actualizaPrecioFacturableBolsaRequest" type="impl:ActualizaPrecioFacturableBolsaRequestDTO"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="ActualizaPrecioFacturableBolsaRequestDTO">
+    <sequence>
+     <element name="codServicio" nillable="true" type="xsd:string"/>
+     <element name="indActivo" nillable="true" type="xsd:string"/>
+     <element name="precio" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="actualizaPrecioFacturableResponse">
+    <complexType>
+     <sequence>
+      <element name="actualizaPrecioFacturableReturn" type="impl:ActualizaPrecioFacturableBolsaResponseDTO"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="ActualizaPrecioFacturableBolsaResponseDTO">
+    <sequence>
+     <element name="codigoRetorno" type="xsd:int"/>
+     <element name="descripcionRetorno" nillable="true" type="xsd:string"/>
+     <element name="numeroEvento" type="xsd:int"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="actualizaPrecioFacturableResponse">
+
+      <wsdl:part element="impl:actualizaPrecioFacturableResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="actualizaPrecioFacturableRequest">
+
+      <wsdl:part element="impl:actualizaPrecioFacturable" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:portType name="ActualizaPrecioFacturableBolsaWS">
+
+      <wsdl:operation name="actualizaPrecioFacturable">
+
+         <wsdl:input message="impl:actualizaPrecioFacturableRequest" name="actualizaPrecioFacturableRequest"/>
+
+         <wsdl:output message="impl:actualizaPrecioFacturableResponse" name="actualizaPrecioFacturableResponse"/>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="ActualizaPrecioFacturableBolsaWSSoapBinding" type="impl:ActualizaPrecioFacturableBolsaWS">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="actualizaPrecioFacturable">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="actualizaPrecioFacturableRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="actualizaPrecioFacturableResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="ActualizaPrecioFacturableBolsaWSService">
+
+      <wsdl:port binding="impl:ActualizaPrecioFacturableBolsaWSSoapBinding" name="ActualizaPrecioFacturableBolsaWS">
+
+         <wsdlsoap:address location="http://localhost:9080/ActualizaPrecioFacturableBolsaWS/services/ActualizaPrecioFacturableBolsaWS"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

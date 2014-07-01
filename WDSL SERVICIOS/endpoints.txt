@@ -1,0 +1,2 @@
+http://esbd1.tchile.local:4355/FindRulesWEB/services/findRules
+http://esbd1.tchile.local:4366/QueryCatalogAppRulesWEB/services/QueryCatalogAppRules

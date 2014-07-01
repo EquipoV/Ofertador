@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://arqweb.telefonicachile.cl/wsdl/ConsultaOfertasClteAntig.wsdl" uri="wsdl/arqweb.telefonicachile.cl/wsdl/ConsultaOfertasClteAntig.wsdl"/>
+</catalog>

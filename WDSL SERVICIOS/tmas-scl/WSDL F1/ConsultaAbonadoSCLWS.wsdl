@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://ws.services.telefonica.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://ws.services.telefonica.com" xmlns:intf="http://ws.services.telefonica.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://ws.services.telefonica.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="consultaAbonado">
+    <complexType>
+     <sequence>
+      <element name="consultaAbonadoSCLRequest" type="impl:ConsultaAbonadoSCLRequestDTO"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="ConsultaAbonadoSCLRequestDTO">
+    <sequence>
+     <element name="numCelular" type="xsd:long"/>
+    </sequence>
+   </complexType>
+   <element name="consultaAbonadoResponse">
+    <complexType>
+     <sequence>
+      <element name="consultaAbonadoReturn" type="impl:ConsultaAbonadoSCLResponseDTO"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="AbonadoSCLDTO">
+    <sequence>
+     <element name="categoria" nillable="true" type="xsd:string"/>
+     <element name="codCiclo" nillable="true" type="xsd:string"/>
+     <element name="codCliente" type="xsd:int"/>
+     <element name="nomCliente" nillable="true" type="xsd:string"/>
+     <element name="nomUsuario" nillable="true" type="xsd:string"/>
+     <element name="numAbonado" type="xsd:int"/>
+     <element name="numCelular" type="xsd:long"/>
+     <element name="numIdent" nillable="true" type="xsd:string"/>
+     <element name="planTarifario" nillable="true" type="xsd:string"/>
+     <element name="situacion" nillable="true" type="xsd:string"/>
+     <element name="tipoIdentificacion" nillable="true" type="xsd:string"/>
+     <element name="usoPlan" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOfAbonadoSCLDTO">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:AbonadoSCLDTO"/>
+    </sequence>
+   </complexType>
+   <complexType name="ConsultaAbonadoSCLResponseDTO">
+    <sequence>
+     <element name="codigoRetorno" nillable="true" type="xsd:string"/>
+     <element name="descripcionRetorno" nillable="true" type="xsd:string"/>
+     <element name="item" nillable="true" type="impl:ArrayOfAbonadoSCLDTO"/>
+     <element name="numeroEvento" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="consultaAbonadoResponse">
+
+      <wsdl:part element="impl:consultaAbonadoResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="consultaAbonadoRequest">
+
+      <wsdl:part element="impl:consultaAbonado" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:portType name="ConsultaAbonadoSCLWS">
+
+      <wsdl:operation name="consultaAbonado">
+
+         <wsdl:input message="impl:consultaAbonadoRequest" name="consultaAbonadoRequest"/>
+
+         <wsdl:output message="impl:consultaAbonadoResponse" name="consultaAbonadoResponse"/>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="ConsultaAbonadoSCLWSSoapBinding" type="impl:ConsultaAbonadoSCLWS">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="consultaAbonado">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="consultaAbonadoRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="consultaAbonadoResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="ConsultaAbonadoSCLWSService">
+
+      <wsdl:port binding="impl:ConsultaAbonadoSCLWSSoapBinding" name="ConsultaAbonadoSCLWS">
+
+         <wsdlsoap:address location="http://localhost:9080/ConsultaAbonadoSCLWS/services/ConsultaAbonadoSCLWS"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

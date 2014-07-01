@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://ws.services.telefonica.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://ws.services.telefonica.com" xmlns:intf="http://ws.services.telefonica.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://ws.services.telefonica.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="consultaPrecioFacturable">
+    <complexType>
+     <sequence>
+      <element name="precioFacturableBolsaRequest" type="impl:PrecioFacturableBolsaRequestDTO"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="PrecioFacturableBolsaRequestDTO">
+    <sequence>
+     <element name="codServicio" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="consultaPrecioFacturableResponse">
+    <complexType>
+     <sequence>
+      <element name="consultaPrecioFacturableReturn" type="impl:PrecioFacturableBolsaResponseDTO"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="PrecioFacturableBolsaResponseDTO">
+    <sequence>
+     <element name="codConcepto" type="xsd:int"/>
+     <element name="codRetorno" type="xsd:int"/>
+     <element name="codServicio" nillable="true" type="xsd:string"/>
+     <element name="desBolsa" nillable="true" type="xsd:string"/>
+     <element name="desConcepto" nillable="true" type="xsd:string"/>
+     <element name="desMoneda" nillable="true" type="xsd:string"/>
+     <element name="desRetorno" nillable="true" type="xsd:string"/>
+     <element name="impTarifa" type="xsd:double"/>
+     <element name="numEvento" type="xsd:int"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="consultaPrecioFacturableResponse">
+
+      <wsdl:part element="impl:consultaPrecioFacturableResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="consultaPrecioFacturableRequest">
+
+      <wsdl:part element="impl:consultaPrecioFacturable" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:portType name="PrecioFacturableBolsaWS">
+
+      <wsdl:operation name="consultaPrecioFacturable">
+
+         <wsdl:input message="impl:consultaPrecioFacturableRequest" name="consultaPrecioFacturableRequest"/>
+
+         <wsdl:output message="impl:consultaPrecioFacturableResponse" name="consultaPrecioFacturableResponse"/>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="PrecioFacturableBolsaWSSoapBinding" type="impl:PrecioFacturableBolsaWS">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="consultaPrecioFacturable">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="consultaPrecioFacturableRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="consultaPrecioFacturableResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="PrecioFacturableBolsaWSService">
+
+      <wsdl:port binding="impl:PrecioFacturableBolsaWSSoapBinding" name="PrecioFacturableBolsaWS">
+
+         <wsdlsoap:address location="http://localhost:9080/ConsultaPrecioFacturableBolsaWS/services/PrecioFacturableBolsaWS"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 13-05-2014 07:57:07 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="cl.movistar.hibernate.dto.Usuarios" table="usuarios" catalog="USERTRCK">
+        <id name="codigo" type="java.lang.Integer">
+            <column name="codigo" />
+            <generator class="identity" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="nombre" length="100" not-null="true" />
+        </property>
+        <property name="rut" type="string">
+            <column name="rut" length="100" not-null="true" />
+        </property>
+        <property name="contrasena" type="string">
+            <column name="contrasena" length="20" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

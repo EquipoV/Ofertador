@@ -1,0 +1,94 @@
+<ns1:deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns1="http://xml.apache.org/axis/wsdd/">
+ <ns1:globalConfiguration>
+  <ns1:parameter name="sendMultiRefs" value="true"/>
+  <ns1:parameter name="disablePrettyXML" value="true"/>
+  <ns1:parameter name="adminPassword" value="admin"/>
+  <ns1:parameter name="attachments.Directory" value="B:\springTool\vfabric-tc-server-developer-2.9.4.RELEASE\base-instance\wtpwebapps\Test\WEB-INF\attachments"/>
+  <ns1:parameter name="dotNetSoapEncFix" value="true"/>
+  <ns1:parameter name="enableNamespacePrefixOptimization" value="false"/>
+  <ns1:parameter name="sendXMLDeclaration" value="true"/>
+  <ns1:parameter name="sendXsiTypes" value="true"/>
+  <ns1:parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
+  <ns1:requestFlow>
+   <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
+    <ns1:parameter name="scope" value="session"/>
+   </ns1:handler>
+   <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
+    <ns1:parameter name="scope" value="request"/>
+    <ns1:parameter name="extension" value=".jwr"/>
+   </ns1:handler>
+  </ns1:requestFlow>
+ </ns1:globalConfiguration>
+ <ns1:handler name="URLMapper" type="java:org.apache.axis.handlers.http.URLMapper"/>
+ <ns1:handler name="LocalResponder" type="java:org.apache.axis.transport.local.LocalResponder"/>
+ <ns1:handler name="Authenticate" type="java:org.apache.axis.handlers.SimpleAuthenticationHandler"/>
+ <ns1:service name="AdminService" provider="java:MSG">
+  <ns1:parameter name="allowedMethods" value="AdminService"/>
+  <ns1:parameter name="enableRemoteAdmin" value="false"/>
+  <ns1:parameter name="className" value="org.apache.axis.utils.Admin"/>
+  <ns1:namespace>http://xml.apache.org/axis/wsdd/</ns1:namespace>
+ </ns1:service>
+ <ns1:service name="Version" provider="java:RPC">
+  <ns1:parameter name="allowedMethods" value="getVersion"/>
+  <ns1:parameter name="className" value="org.apache.axis.Version"/>
+ </ns1:service>
+ <ns1:service name="OfertadorImpl" provider="java:RPC" style="wrapped" use="literal">
+  <ns3:operation name="validarFactibilidadVentaOtrosCanales" qname="ns1:validarFactibilidadVentaOtrosCanales" returnQName="ns1:validarFactibilidadVentaOtrosCanalesReturn" returnType="ns2:Response" soapAction="" xmlns:ns1="http://services.ofertador.movistar.cl" xmlns:ns2="http://dto.ofertador.movistar.cl" xmlns:ns3="http://xml.apache.org/axis/wsdd/">
+   <ns3:parameter qname="ns1:solicitudFactibilidadVentaOtrosCanales" type="ns2:SolicitudFactibilidadVentaOtrosCanales"/>
+  </ns3:operation>
+  <ns1:operation name="validarCompatibilidadEntreOfertas" qname="ns3:validarCompatibilidadEntreOfertas" returnQName="ns3:validarCompatibilidadEntreOfertasReturn" returnType="ns4:Response" soapAction="" xmlns:ns3="http://services.ofertador.movistar.cl" xmlns:ns4="http://dto.ofertador.movistar.cl">
+   <ns1:parameter qname="ns3:solicitudCompatibilidadOferta" type="ns4:SolicitudCompatibilidadOferta"/>
+  </ns1:operation>
+  <ns1:operation name="obtenerDetalleOferta" qname="ns5:obtenerDetalleOferta" returnQName="ns5:obtenerDetalleOfertaReturn" returnType="ns6:ResponseDetalleOferta" soapAction="" xmlns:ns5="http://services.ofertador.movistar.cl" xmlns:ns6="http://dto.ofertador.movistar.cl">
+   <ns1:parameter qname="ns5:codigoOferta" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="obtenerOfertas" qname="ns7:obtenerOfertas" returnQName="ns7:obtenerOfertasReturn" returnType="ns8:ResponseOfertas" soapAction="" xmlns:ns7="http://services.ofertador.movistar.cl" xmlns:ns8="http://dto.ofertador.movistar.cl">
+   <ns1:parameter qname="ns7:solicitudOferta" type="ns8:SolicitudOferta"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="obtenerOfertas validarFactibilidadVentaOtrosCanales obtenerDetalleOferta validarCompatibilidadEntreOfertas"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="wsdlPortType" value="OfertadorImpl"/>
+  <ns1:parameter name="className" value="cl.movistar.ofertador.services.OfertadorImpl"/>
+  <ns1:parameter name="wsdlServicePort" value="OfertadorImpl"/>
+  <ns1:parameter name="schemaQualified" value="http://dto.ofertador.movistar.cl,http://detalleoferta.dto.ofertador.movistar.cl,http://services.ofertador.movistar.cl"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://services.ofertador.movistar.cl"/>
+  <ns1:parameter name="wsdlServiceElement" value="OfertadorImplService"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns9:Canal" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:cl.movistar.ofertador.dto.detalleoferta.Canal" xmlns:ns9="http://detalleoferta.dto.ofertador.movistar.cl"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns10:RespuestaServicio" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:cl.movistar.ofertador.dto.RespuestaServicio" xmlns:ns10="http://dto.ofertador.movistar.cl"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns11:Oferta" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:cl.movistar.ofertador.dto.Oferta" xmlns:ns11="http://dto.ofertador.movistar.cl"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns12:DetalleOferta" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:cl.movistar.ofertador.dto.detalleoferta.DetalleOferta" xmlns:ns12="http://detalleoferta.dto.ofertador.movistar.cl"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns13:Precio" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:cl.movistar.ofertador.dto.detalleoferta.Precio" xmlns:ns13="http://detalleoferta.dto.ofertador.movistar.cl"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns14:ResponseOfertas" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:cl.movistar.ofertador.dto.ResponseOfertas" xmlns:ns14="http://dto.ofertador.movistar.cl"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns15:Response" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:cl.movistar.ofertador.dto.Response" xmlns:ns15="http://dto.ofertador.movistar.cl"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns16:SolicitudOferta" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:cl.movistar.ofertador.dto.SolicitudOferta" xmlns:ns16="http://dto.ofertador.movistar.cl"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns17:CaracteristicaProducto" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:cl.movistar.ofertador.dto.detalleoferta.CaracteristicaProducto" xmlns:ns17="http://detalleoferta.dto.ofertador.movistar.cl"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns18:SolicitudFactibilidadVentaOtrosCanales" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:cl.movistar.ofertador.dto.SolicitudFactibilidadVentaOtrosCanales" xmlns:ns18="http://dto.ofertador.movistar.cl"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns19:Producto" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:cl.movistar.ofertador.dto.detalleoferta.Producto" xmlns:ns19="http://detalleoferta.dto.ofertador.movistar.cl"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns20:SolicitudCompatibilidadOferta" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:cl.movistar.ofertador.dto.SolicitudCompatibilidadOferta" xmlns:ns20="http://dto.ofertador.movistar.cl"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns21:SegmentoMercado" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:cl.movistar.ofertador.dto.detalleoferta.SegmentoMercado" xmlns:ns21="http://detalleoferta.dto.ofertador.movistar.cl"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns22:ResponseDetalleOferta" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:cl.movistar.ofertador.dto.ResponseDetalleOferta" xmlns:ns22="http://dto.ofertador.movistar.cl"/>
+  <ns1:arrayMapping innerType="ns24:CaracteristicaProducto" languageSpecificType="java:cl.movistar.ofertador.dto.detalleoferta.CaracteristicaProducto[]" qname="ns23:ArrayOf_tns2_CaracteristicaProducto" xmlns:ns23="http://services.ofertador.movistar.cl" xmlns:ns24="http://detalleoferta.dto.ofertador.movistar.cl"/>
+  <ns1:arrayMapping innerType="ns26:Producto" languageSpecificType="java:cl.movistar.ofertador.dto.detalleoferta.Producto[]" qname="ns25:ArrayOf_tns2_Producto" xmlns:ns25="http://services.ofertador.movistar.cl" xmlns:ns26="http://detalleoferta.dto.ofertador.movistar.cl"/>
+  <ns1:arrayMapping innerType="ns28:Oferta" languageSpecificType="java:cl.movistar.ofertador.dto.Oferta[]" qname="ns27:ArrayOf_tns1_Oferta" xmlns:ns27="http://services.ofertador.movistar.cl" xmlns:ns28="http://dto.ofertador.movistar.cl"/>
+  <ns1:arrayMapping innerType="ns30:SegmentoMercado" languageSpecificType="java:cl.movistar.ofertador.dto.detalleoferta.SegmentoMercado[]" qname="ns29:ArrayOf_tns2_SegmentoMercado" xmlns:ns29="http://services.ofertador.movistar.cl" xmlns:ns30="http://detalleoferta.dto.ofertador.movistar.cl"/>
+  <ns1:arrayMapping innerType="ns32:Precio" languageSpecificType="java:cl.movistar.ofertador.dto.detalleoferta.Precio[]" qname="ns31:ArrayOf_tns2_Precio" xmlns:ns31="http://services.ofertador.movistar.cl" xmlns:ns32="http://detalleoferta.dto.ofertador.movistar.cl"/>
+  <ns1:arrayMapping innerType="ns34:Canal" languageSpecificType="java:cl.movistar.ofertador.dto.detalleoferta.Canal[]" qname="ns33:ArrayOf_tns2_Canal" xmlns:ns33="http://services.ofertador.movistar.cl" xmlns:ns34="http://detalleoferta.dto.ofertador.movistar.cl"/>
+ </ns1:service>
+ <ns1:transport name="http">
+  <ns1:requestFlow>
+   <ns1:handler type="URLMapper"/>
+   <ns1:handler type="java:org.apache.axis.handlers.http.HTTPAuthHandler"/>
+  </ns1:requestFlow>
+  <ns1:parameter name="qs:list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <ns1:parameter name="qs:wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+  <ns1:parameter name="qs.list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <ns1:parameter name="qs.method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <ns1:parameter name="qs:method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <ns1:parameter name="qs.wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+ </ns1:transport>
+ <ns1:transport name="local">
+  <ns1:responseFlow>
+   <ns1:handler type="LocalResponder"/>
+  </ns1:responseFlow>
+ </ns1:transport>
+</ns1:deployment>

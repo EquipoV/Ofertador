@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://ws.services.telefonica.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://ws.services.telefonica.com" xmlns:intf="http://ws.services.telefonica.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://ws.services.telefonica.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="consultaTrafico">
+    <complexType>
+     <sequence>
+      <element name="traficoFacturadoRequest" type="impl:TraficoFacturadoRequestDTO"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="TraficoFacturadoRequestDTO">
+    <sequence>
+     <element name="numAbonado" nillable="true" type="xsd:string"/>
+     <element name="numFolio" nillable="true" type="xsd:string"/>
+     <element name="numPag" nillable="true" type="xsd:string"/>
+     <element name="numRegPag" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="consultaTraficoResponse">
+    <complexType>
+     <sequence>
+      <element name="consultaTraficoReturn" type="impl:TraficoFacturadoResponseDTO"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="Boleta">
+    <sequence>
+     <element name="fecVencimiento" nillable="true" type="xsd:string"/>
+     <element name="numFolio" type="xsd:int"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOfBoleta">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:Boleta"/>
+    </sequence>
+   </complexType>
+   <complexType name="BoletaDTO">
+    <sequence>
+     <element name="item" nillable="true" type="impl:ArrayOfBoleta"/>
+    </sequence>
+   </complexType>
+   <complexType name="DetalleDTO">
+    <sequence>
+     <element name="bolsa" nillable="true" type="xsd:string"/>
+     <element name="caracteristica" nillable="true" type="xsd:string"/>
+     <element name="destino" nillable="true" type="xsd:string"/>
+     <element name="durLlamada" nillable="true" type="xsd:string"/>
+     <element name="durSeg" nillable="true" type="xsd:string"/>
+     <element name="fecLlamada" nillable="true" type="xsd:string"/>
+     <element name="glosa" nillable="true" type="xsd:string"/>
+     <element name="horaInicio" nillable="true" type="xsd:string"/>
+     <element name="horaTermino" nillable="true" type="xsd:string"/>
+     <element name="numFolio" type="xsd:int"/>
+     <element name="numMovil1" type="xsd:long"/>
+     <element name="numMovil2" type="xsd:long"/>
+     <element name="planTarif" nillable="true" type="xsd:string"/>
+     <element name="tramoHorario" nillable="true" type="xsd:string"/>
+     <element name="valorLlamada" type="xsd:double"/>
+     <element name="valorTarifa" type="xsd:double"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOfDetalleDTO">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:DetalleDTO"/>
+    </sequence>
+   </complexType>
+   <complexType name="TraficoFacturadoResponseDTO">
+    <sequence>
+     <element name="boleta" nillable="true" type="impl:BoletaDTO"/>
+     <element name="codigoRetorno" nillable="true" type="xsd:string"/>
+     <element name="descripcionRetorno" nillable="true" type="xsd:string"/>
+     <element name="item" nillable="true" type="impl:ArrayOfDetalleDTO"/>
+     <element name="numMaxPag" nillable="true" type="xsd:string"/>
+     <element name="numPag" nillable="true" type="xsd:string"/>
+     <element name="numRegPag" nillable="true" type="xsd:string"/>
+     <element name="numTotReg" nillable="true" type="xsd:string"/>
+     <element name="numeroEvento" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="consultaTraficoResponse">
+
+      <wsdl:part element="impl:consultaTraficoResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="consultaTraficoRequest">
+
+      <wsdl:part element="impl:consultaTrafico" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:portType name="TraficoFacturadoWS">
+
+      <wsdl:operation name="consultaTrafico">
+
+         <wsdl:input message="impl:consultaTraficoRequest" name="consultaTraficoRequest"/>
+
+         <wsdl:output message="impl:consultaTraficoResponse" name="consultaTraficoResponse"/>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="TraficoFacturadoWSSoapBinding" type="impl:TraficoFacturadoWS">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="consultaTrafico">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="consultaTraficoRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="consultaTraficoResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="TraficoFacturadoWSService">
+
+      <wsdl:port binding="impl:TraficoFacturadoWSSoapBinding" name="TraficoFacturadoWS">
+
+         <wsdlsoap:address location="http://localhost:9080/ConsultaTraficoFacturadoWS/services/TraficoFacturadoWS"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
