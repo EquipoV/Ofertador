@@ -10,7 +10,8 @@ nbactions.xml
 nb-configuration.xml
 nbproject/
 build.xml
-web/META-INF/context.xml
+context.xml
+catalog.xml
 
 
 ### Maven ###
