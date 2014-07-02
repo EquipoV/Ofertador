@@ -14,7 +14,7 @@
 <!--     <property name="hibernate.connection.username">precheq1</property> -->
 <!--     <property name="hibernate.connection.password">tch2pc09</property> -->
 
-<property name="hibernate.dialect">org.hibernate.dialect.DB2Dialect</property>
+	<property name="hibernate.dialect">org.hibernate.dialect.DB2Dialect</property>
     <property name="current_session_context_class">thread</property>
     <property name="hibernate.bytecode.use_reflection_optimizer">false</property>
     <property name="hibernate.connection.datasource">java:comp/env/jndi/tracking</property>

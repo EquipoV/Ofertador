@@ -147,21 +147,21 @@ public class ObtenerOfertaGateway {
 		List<Oferta> ofertasOfertasContencion = Helper
 				.getOfertaContencion(solicitudOferta);
 
-//		// Obtener las ofertas desde Parque y Bitacora de Recurrencia
-//		List<Oferta> OfertasParqueYEnVuelo = Helper
-//						.obtenerOfertasParqueBitacora(solicitudOferta
-//								.getNumeroCelular());
-//				
-//		//Si no encuentra nada en Parque O En vuelo, devuelve las ofertas de Catálogo inmediatamente.
-//		if(OfertasParqueYEnVuelo.size()==0){return ofertasOfertasContencion;}
-//					
-//		// Eliminar del listado de ofertas, todas las ofertas que el
-//		// cliente tenga contratadas
-//		List<Oferta> ofertasEliminadasContradasContencion = Helper
-//				.eliminarOfertasContratadas(ofertasOfertasContencion,
-//						OfertasParqueYEnVuelo);
+		// Obtener las ofertas desde Parque y Bitacora de Recurrencia
+		List<Oferta> OfertasParqueYEnVuelo = Helper
+						.obtenerOfertasParqueBitacora(solicitudOferta
+								.getNumeroCelular());
+				
+		//Si no encuentra nada en Parque O En vuelo, devuelve las ofertas de Catálogo inmediatamente.
+		if(OfertasParqueYEnVuelo.size()==0){return ofertasOfertasContencion;}
+					
+		// Eliminar del listado de ofertas, todas las ofertas que el
+		// cliente tenga contratadas
+		List<Oferta> ofertasEliminadasContradasContencion = Helper
+				.eliminarOfertasContratadas(ofertasOfertasContencion,
+						OfertasParqueYEnVuelo);
 						
-	return ofertasOfertasContencion;
+	return ofertasEliminadasContradasContencion;
 	}
 
 	private List<Oferta> flujoSugeridaObtenerOferta(
@@ -170,22 +170,22 @@ public class ObtenerOfertaGateway {
 		// Obtener ofertas sugeridas (WS BI)
 		List<Oferta> ofertasOfertasSugeridas = Helper
 				.getOfertaSugerida(solicitudOferta);
-//
-//		// Obtener las ofertas desde Parque y Bitacora de Recurrencia
-//		List<Oferta> OfertasParqueYEnVuelo = Helper
-//						.obtenerOfertasParqueBitacora(solicitudOferta
-//								.getNumeroCelular());
-//				
-//		//Si no encuentra nada en Parque O En vuelo, devuelve las ofertas de Catálogo inmediatamente.
-//		if(OfertasParqueYEnVuelo.size()==0){return ofertasOfertasSugeridas;}
-//					
-//		// Eliminar del listado de ofertas, todas las ofertas que el
-//		// cliente tenga contratadas
-//		List<Oferta> ofertasEliminadasContradasSugeridas = Helper
-//				.eliminarOfertasContratadas(ofertasOfertasSugeridas,
-//						OfertasParqueYEnVuelo);
+
+		// Obtener las ofertas desde Parque y Bitacora de Recurrencia
+		List<Oferta> OfertasParqueYEnVuelo = Helper
+						.obtenerOfertasParqueBitacora(solicitudOferta
+								.getNumeroCelular());
 				
-		return ofertasOfertasSugeridas;
+		//Si no encuentra nada en Parque O En vuelo, devuelve las ofertas de Catálogo inmediatamente.
+		if(OfertasParqueYEnVuelo.size()==0){return ofertasOfertasSugeridas;}
+					
+		// Eliminar del listado de ofertas, todas las ofertas que el
+		// cliente tenga contratadas
+		List<Oferta> ofertasEliminadasContradasSugeridas = Helper
+				.eliminarOfertasContratadas(ofertasOfertasSugeridas,
+						OfertasParqueYEnVuelo);
+				
+		return ofertasEliminadasContradasSugeridas;
 	}
 
 	private List<Oferta> flujoGeneralObtenerOferta(
