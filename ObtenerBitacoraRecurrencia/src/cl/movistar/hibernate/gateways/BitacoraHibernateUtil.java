@@ -7,6 +7,8 @@
 package cl.movistar.hibernate.gateways;
 
 import org.hibernate.cfg.AnnotationConfiguration;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.service.ServiceRegistry;
 import org.hibernate.SessionFactory;
 
 /**
@@ -17,21 +19,28 @@ import org.hibernate.SessionFactory;
  */
 public class BitacoraHibernateUtil {
 
-    private static final SessionFactory sessionFactory;
-    
-    static {
-        try {
-            // Create the SessionFactory from standard (hibernate.cfg.xml) 
-            // config file.
-            sessionFactory = new AnnotationConfiguration().configure().buildSessionFactory();
-        } catch (Throwable ex) {
-            // Log the exception. 
-            System.err.println("Initial SessionFactory creation failed." + ex);
-            throw new ExceptionInInitializerError(ex);
-        }
-    }
-    
-    public static SessionFactory getSessionFactory() {
-        return sessionFactory;
-    }
+	private static final SessionFactory sessionFactory;
+
+	static {
+		 SessionFactory sessionFactoryAUX;
+			try {
+				
+		            // Create the SessionFactory from standard (hibernate.cfg.xml)
+		            // config file.
+		           
+		                sessionFactoryAUX = new Configuration().configure(
+		                        "hibernateJNDI.cfg.xml").buildSessionFactory();
+	                        if(sessionFactoryAUX.openSession().beginTransaction().isActive())sessionFactoryAUX.openSession().close();
+			} catch (Throwable ex) {
+	                  sessionFactoryAUX = new Configuration().configure(
+	                          "hibernateDesarrollo.cfg.xml").buildSessionFactory();
+	                  if(sessionFactoryAUX.openSession().beginTransaction().isActive())sessionFactoryAUX.openSession().close();
+			}
+			  sessionFactory = sessionFactoryAUX;
+	}
+
+	public static SessionFactory getSessionFactory() {
+		return sessionFactory;
+	}
+
 }

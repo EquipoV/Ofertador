@@ -50,14 +50,14 @@ public class ObtenerOfertaGatewayTest {
         solicitudOferta.setCanal("9");
 //        solicitudOferta.setNumeroCelular(99642950);
 //        solicitudOferta.setNumeroCelular(95296146);
-//        solicitudOferta.setNumeroCelular(99642950);
+        solicitudOferta.setNumeroCelular(99642950);
 //        solicitudOferta.setNumeroCelular(90338819);//Prepago 
 //        solicitudOferta.setNumeroCelular(97590320);//Contrato No Moroso
 //        solicitudOferta.setNumeroCelular(71323313);//Contrato El Rafa
         solicitudOferta.setNumeroCelular(97084472);//hIBRIDO hermano de mauricio
         
 //        solicitudOferta.setNumeroCelular(89145500);
-        solicitudOferta.setVisualizacion("SUGERIDA");
+        solicitudOferta.setVisualizacion("generales");
         boolean dummy = false;
         try{
         ObtenerOfertaGateway instance = new ObtenerOfertaGateway();

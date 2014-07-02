@@ -17,6 +17,7 @@ public class BitacoraHibernateGatewayTest {
 		try {
 //			List<MovimientosTracking2> lista = bitacoraHibernateGateway.obtieneMovimientos(92315914);
 //			List<MovimientosTracking> lista = bitacoraHibernateGateway.obtieneMovimientos(90338819);
+//			List<MovimientosTracking> lista = bitacoraHibernateGateway.obtieneMovimientos(97084472);
 			List<MovimientosTracking> lista = bitacoraHibernateGateway.obtieneMovimientos(97084472);
 			System.out.println("");
 		} catch (Exception e) {
