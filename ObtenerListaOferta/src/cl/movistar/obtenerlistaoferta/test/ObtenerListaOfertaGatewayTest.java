@@ -1,5 +1,6 @@
 package cl.movistar.obtenerlistaoferta.test;
 
+import java.lang.reflect.InvocationTargetException;
 import java.net.MalformedURLException;
 import java.rmi.RemoteException;
 import java.text.ParseException;
@@ -21,8 +22,8 @@ public class ObtenerListaOfertaGatewayTest extends TestCase {
 				obtener = new ObtenerListaOfertaGateway("http://cws2010.ctc.cl:87/FindProductOfferingWEB/services/findProductOffering",false);
 				SolicitudListaOferta solicitudListaOferta = new  SolicitudListaOferta();
 				solicitudListaOferta.setVisualizacion("general");
-				solicitudListaOferta.setTipoContrato("HIBRIDO");
-				solicitudListaOferta.setCanal("9");
+				solicitudListaOferta.setTipoContrato("Contrato");
+				solicitudListaOferta.setCanal("11");
 				respuestaListaOferta = obtener.obtenerListaOferta(solicitudListaOferta);
 			System.out.println("");
 			} catch (AxisFault e) {
@@ -33,6 +34,8 @@ public class ObtenerListaOfertaGatewayTest extends TestCase {
 			} catch (RemoteException e) {
 				e.printStackTrace();
 			} catch (ParseException e) {
+				e.printStackTrace();
+			}catch (InvocationTargetException e){
 				e.printStackTrace();
 			}
 			

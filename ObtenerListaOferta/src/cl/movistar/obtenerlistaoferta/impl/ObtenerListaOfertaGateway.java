@@ -217,7 +217,8 @@ public class ObtenerListaOfertaGateway {
 			findProductOfferingRequest.setProductOfferingName("");
 			findProductOfferingRequest.setProductSpecificationTechnology("");
 			findProductOfferingRequest.setCodProductSpecification("");
-			findProductOfferingRequest.setResponsePageAmount("100");
+			//Modificar aquí la cantidad de bolsas de retorno
+			findProductOfferingRequest.setResponsePageAmount("9999");
 			findProductOfferingRequest.setResponsePageLowerValue("");
 			findProductOfferingRequest.setResponsePageUnit("");
 

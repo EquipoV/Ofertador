@@ -1,12 +1,15 @@
 package cl.movistar.ofertador.helpers;
 
 import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Properties;
 
+import org.apache.axis.AxisFault;
 import org.apache.log4j.PropertyConfigurator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -219,7 +222,7 @@ public class ObtenerOfertaHelper {
 		return ofertas;
 	}
 
-	public Cliente obtenerCliente(int numeroCelular) throws Exception {
+	public Cliente obtenerCliente(int numeroCelular) throws AxisFault, MalformedURLException, RemoteException, Exception {
 
 		RespuestaDatosCliente respuestaDatosCliente = obtenerDatosClienteFacade
 				.obtenerDatosCliente(numeroCelular);

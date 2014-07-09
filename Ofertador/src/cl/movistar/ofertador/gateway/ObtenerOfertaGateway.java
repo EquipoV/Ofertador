@@ -115,7 +115,7 @@ public class ObtenerOfertaGateway {
 
 		} catch (OfertadorException ex) {
 
-			logger.error("Error en ObtenerOfertas", ex);
+			logger.error("Error  Controlado en ObtenerOfertas", ex);
 			respuestaServicio.setCodigo(ex.getCodigoError());
 			respuestaServicio.setMensaje(ex.getDescripcionError());
 			responseOfertas.setRespuestaServicio(respuestaServicio);

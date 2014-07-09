@@ -11,7 +11,8 @@ public class Configuracion {
 
 		try {
 //			props.load(getClass().getResourceAsStream("configVPN.properties"));
-			props.load(getClass().getResourceAsStream("configDesarrollo.properties"));
+//			props.load(getClass().getResourceAsStream("configDesarrollo.properties"));
+			props.load(getClass().getResourceAsStream("configQA.properties"));
 			// props.load(getClass().getResourceAsStream("configProduccion.properties"));
 			
 			setObtenerParqueEndPoint(props.getProperty("servicio.obtenerparque.endpoint"));

@@ -10,10 +10,10 @@ public class ObtenerParqueGatewayTest {
 	public final void testObtenerParque() {
 
 		System.out.println("obtenerParque");
-        String numCelular = "97084472";
+        String numCelular = "89409390";
         ObtenerParqueGateway instance;
 		try {
-			instance = new ObtenerParqueGateway("http://cap2011.ctc.cl:9144/CambioDePlanWS/services/WSConsultaSSAbonado",false);
+			instance = new ObtenerParqueGateway("http://cap2011.ctc.cl:9155/CambioDePlanWS/services/WSConsultaSSAbonado",false);
 			  RespuestaParque result = instance.obtenerParque(numCelular);
 			  System.out.println("");
 		} catch (Exception e) {

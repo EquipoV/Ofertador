@@ -3,11 +3,7 @@ package cl.movistar.obtenerdatoscliente.impl;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.rmi.RemoteException;
-
-import javax.xml.rpc.ServiceException;
-
 import org.apache.axis.AxisFault;
-
 import cl.movistar.obtenerdatoscliente.dto.BolsaAbonado;
 import cl.movistar.obtenerdatoscliente.dto.Cliente;
 import cl.movistar.obtenerdatoscliente.dto.RespuestaDatosCliente;
@@ -60,7 +56,7 @@ public class ObtenerDatosClienteGateway {
 	}
 
 	public RespuestaDatosCliente obtenerDatosCliente(int numCelular)
-			throws Exception {
+			throws RemoteException {
 
 		RespuestaDatosCliente resultado = null;
 		try {
