@@ -4,7 +4,8 @@
   <session-factory>
     <property name="hibernate.dialect">org.hibernate.dialect.DB2Dialect</property>
     <property name="hibernate.connection.driver_class">com.ibm.db2.jcc.DB2Driver</property>
-    <property name="hibernate.connection.url">jdbc:db2://10.186.31.13:56000/TRACKING</property>
+<!--     <property name="hibernate.connection.url">jdbc:db2://10.186.31.13:56000/TRACKING</property> -->
+     <property name="hibernate.connection.url">jdbc:db2://QDB2462:50000/TRACKING</property>
     <property name="hibernate.connection.username">USERTRCK</property>
     <property name="hibernate.connection.password">track2014</property>
     

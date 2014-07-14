@@ -10,21 +10,28 @@ import cl.movistar.hibernate.gateways.BitacoraHibernateGateway;
 
 
 public class BitacoraHibernateGatewayTest {
-
-	@Test
-	public void testObtieneMovimientos() {
-		BitacoraHibernateGateway bitacoraHibernateGateway = new BitacoraHibernateGateway();
-		try {
-//			List<MovimientosTracking2> lista = bitacoraHibernateGateway.obtieneMovimientos(92315914);
-//			List<MovimientosTracking> lista = bitacoraHibernateGateway.obtieneMovimientos(90338819);
+//
+//	@Test
+//	public void testObtieneMovimientos() {
+//		BitacoraHibernateGateway bitacoraHibernateGateway = new BitacoraHibernateGateway();
+//		try {
+//////			List<MovimientosTracking2> lista = bitacoraHibernateGateway.obtieneMovimientos(92315914);
+////			List<MovimientosTracking> lista = bitacoraHibernateGateway.obtieneMovimientos(90338819);
+//////			List<MovimientosTracking> lista = bitacoraHibernateGateway.obtieneMovimientos(97084472);
 //			List<MovimientosTracking> lista = bitacoraHibernateGateway.obtieneMovimientos(97084472);
-			List<MovimientosTracking> lista = bitacoraHibernateGateway.obtieneMovimientos(97084472);
-			System.out.println("");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	
-	
+//			System.out.println("");
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//	
+//	
+//	}
+//	
+	@Test
+	public void testObtieneMovimientosConEstado(){
+		BitacoraHibernateGateway bitacoraHibernateGateway = new BitacoraHibernateGateway();
+		List lista = bitacoraHibernateGateway.obtenerMovimientosConEstado(71389235);
+		System.out.println("");
 	}
 
 }

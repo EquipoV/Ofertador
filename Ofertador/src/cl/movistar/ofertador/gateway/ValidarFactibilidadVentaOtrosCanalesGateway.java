@@ -106,12 +106,13 @@ public class ValidarFactibilidadVentaOtrosCanalesGateway {
 		try {
 			OfertadorFacade OfertadorFacade = new OfertadorFacade();
 			SolicitudOferta solicitudOferta = new SolicitudOferta();
-			solicitudOferta.setCanal("0");
+			solicitudOferta.setVisualizacion("Generales");
+			solicitudOferta.setCanal("6");
                         solicitudOferta.setNumeroCelular(solicitudFOCanales.getNumeroCelular());
 			//Ver si se necesita ingresar mas datos
 			ResponseOfertas respuestaListaOferta = OfertadorFacade.obtenerOfertas(solicitudOferta,false);
 		
-                        if(respuestaListaOferta.getRespuestaServicio().getCodigo()==0||respuestaListaOferta.getOfertas().length>0){
+                        if(respuestaListaOferta.getRespuestaServicio().getCodigo()==0){
                         Oferta[] ofertas = respuestaListaOferta.getOfertas();
                             for (int i = 0; i < ofertas.length; i++) {
                                 Oferta oferta = ofertas[i];
@@ -119,9 +120,20 @@ public class ValidarFactibilidadVentaOtrosCanalesGateway {
                                     return "true";
                             }
                             
-                        }
-                        
-	
+                        }          
+           solicitudOferta.setCanal("7");
+           respuestaListaOferta = OfertadorFacade.obtenerOfertas(solicitudOferta,false);
+   		
+           if(respuestaListaOferta.getRespuestaServicio().getCodigo()==0){
+           Oferta[] ofertas = respuestaListaOferta.getOfertas();
+               for (int i = 0; i < ofertas.length; i++) {
+                   Oferta oferta = ofertas[i];
+                   if(oferta.getIdRed().equalsIgnoreCase(solicitudFOCanales.getIdRed()))
+                       return "true";
+               }
+               
+           }
+           
 			
 		} catch (Exception e) {
 			logger.error("Error en obtenerRespuestaCatalogoPorIdred", e);

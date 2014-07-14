@@ -14,9 +14,9 @@ public class ValidarFactibilidadVentaOtrosCanalesGatewayTest {
 	public void testValidaFactibilidadVentaOtrosCanales() {
 		SolicitudFactibilidadVentaOtrosCanales solicitudFactibilidadVentaOtrosCanales = new SolicitudFactibilidadVentaOtrosCanales();
 		try {
-			solicitudFactibilidadVentaOtrosCanales.setIdRed("test_PC_prep");
+			solicitudFactibilidadVentaOtrosCanales.setIdRed("100SMS30ON_U");
 //			solicitudFactibilidadVentaOtrosCanales.setNumeroCelular(97590320);
-			solicitudFactibilidadVentaOtrosCanales.setNumeroCelular(90338819);
+			solicitudFactibilidadVentaOtrosCanales.setNumeroCelular(71374524);
 			Response response = ValidarFactibilidadVentaOtrosCanalesGateway.getInstance().validaFactibilidadVentaOtrosCanales(solicitudFactibilidadVentaOtrosCanales, false);
 		System.out.println("");
 		} catch (Exception e) {

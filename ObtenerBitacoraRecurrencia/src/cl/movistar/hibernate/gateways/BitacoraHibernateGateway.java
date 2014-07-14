@@ -127,6 +127,22 @@ public class BitacoraHibernateGateway {
 		List<VentaBolsa> ventaBolsa = query.list();
 		return ventaBolsa;
 	}
+	public List obtenerMovimientosConEstado(int numeroCelular) {
+		Query result = null;
+		List resultado = null;
+		try{
+			session = BitacoraHibernateUtil.getSessionFactory().openSession();
+			session.beginTransaction();
+		result = session.createSQLQuery("select A.*,B.nombre from Movimientos_Tracking as A Left Join Estado as B ON A.estado = B.id WHERE A.numero_celular = '" + numeroCelular + "' ");
+		
+		resultado = result.list();
+		session.close();
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+		
+		return resultado;
+	}
 
 	private Session session;
 	private static final BitacoraHibernateGateway INSTANCE = new BitacoraHibernateGateway();
