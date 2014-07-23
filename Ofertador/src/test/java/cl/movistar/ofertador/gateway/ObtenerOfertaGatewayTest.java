@@ -47,7 +47,7 @@ public class ObtenerOfertaGatewayTest {
     @Test
     public void testObtenerOfertas() throws Exception {
         SolicitudOferta solicitudOferta = new SolicitudOferta();
-        solicitudOferta.setCanal("11");
+        solicitudOferta.setCanal("0");
 //        solicitudOferta.setNumeroCelular(99642950);
 //        solicitudOferta.setNumeroCelular(95296146);
 //        solicitudOferta.setNumeroCelular(99642950);
@@ -56,7 +56,8 @@ public class ObtenerOfertaGatewayTest {
 //        solicitudOferta.setNumeroCelular(71323313);//Contrato El Rafa
 //        solicitudOferta.setNumeroCelular(97084472);//hIBRIDO hermano de mauricio
 //        solicitudOferta.setNumeroCelular(95462060);//
-        solicitudOferta.setNumeroCelular(92295092);//
+//        solicitudOferta.setNumeroCelular(92295092);//
+        solicitudOferta.setNumeroCelular(92315914);//con parque
         
 //        solicitudOferta.setNumeroCelular(89145500);
         solicitudOferta.setVisualizacion("generales");

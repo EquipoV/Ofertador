@@ -1,6 +1,7 @@
 package cl.movistar.ofertador.gateway;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import cl.movistar.obtenerdatoscliente.dto.Cliente;
@@ -123,6 +124,7 @@ public class ObtenerOfertaGateway {
 			logger.info("Proceso Insatisfactorio para el CLiente: " +cliente.getNombreCliente() +" "+cliente.getApellido1Usuario()+" "+cliente.getApellido2Usuario()+", Número Celular: "+ cliente.getNumCelular());
 			}catch (Exception e){logger.info("Proceso Insatisfactorio, no se alcanzó a recuperar datos Cliente");}
 		} finally {
+					Collections.sort(ofertasFinales);
 					Oferta[] ofertasFinalesAUX = ofertasFinales
 							.toArray(new Oferta[ofertasFinales.size()]);
 					if (ofertasFinalesAUX.length != 0){

@@ -1,6 +1,6 @@
 package cl.movistar.ofertador.dto;
 
-public class Oferta {
+public class Oferta implements Comparable<Oferta> {
 
 	public String getCodigoOferta() {
 		return codigoOferta;
@@ -128,5 +128,12 @@ public class Oferta {
 	private String estado;
 	private String fechaInicio;
 	private String fechaTermino;
+	
+	
+	@Override
+	public int compareTo(Oferta o) {
+		
+		return this.familia.compareToIgnoreCase(o.familia);
+	}
 
 }

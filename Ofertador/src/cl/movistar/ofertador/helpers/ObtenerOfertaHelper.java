@@ -293,13 +293,13 @@ public class ObtenerOfertaHelper {
 
 				try {
 					List<Oferta> ofertasParqueCatalogo = obternerOfertasCatalogoPorSS(itemsParque[i]
-							.getCodigoSS());
+							.getCodigoServicio());
 
 					ofertas.add(ofertasParqueCatalogo.get(0));
 
 				} catch (Exception e) {
-					logger.info("No se encontro oferta en catálogo código SS: "
-							+ itemsParque[i].getCodigoSS());
+					logger.info("No se encontro oferta en catálogo código Servicio: "
+							+ itemsParque[i].getCodigoServicio());
 				}
 			}
 		}
@@ -366,11 +366,13 @@ public class ObtenerOfertaHelper {
 			if (ofertaAEliminar.getCodigoOferta().equalsIgnoreCase(
 					ofertaCatalogo.getCodigoOferta())) {
 
-				ofertasCatalogo.remove(ofertaCatalogo);
-
 				logger.info("Oferta Eliminada ya que se encuentra En Vuelo o en el Parque, Codigo Oferta: "
 						+ ofertaCatalogo.getCodigoOferta());
-				break;
+				
+				ofertasCatalogo.remove(ofertaCatalogo);
+				return eliminarOfertasContratadasComparando(ofertaAEliminar,ofertasCatalogo);
+				
+				
 			}
 		}
 		return ofertasCatalogo;
