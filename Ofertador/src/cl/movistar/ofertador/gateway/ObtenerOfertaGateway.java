@@ -237,6 +237,9 @@ public class ObtenerOfertaGateway {
 					.aplicarMatrizDeIncompatibilidad(OfertasParqueYEnVuelo,
 							ofertasMatrizQAplicadaGenerales);
 		}
+		
+		//Aplicar Tenencia de Equipo
+//		List<Oferta> ofertasFiltradasTeneciaDeEquipo = Helper.aplicarTeneciaDeEquipo(ofertasMatrizIncompAplicadaGenerales,solicitudOferta.getNumeroCelular());
 
 		return ofertasMatrizIncompAplicadaGenerales;
 	}

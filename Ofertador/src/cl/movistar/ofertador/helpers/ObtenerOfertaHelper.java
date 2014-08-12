@@ -467,7 +467,7 @@ public class ObtenerOfertaHelper {
 		if (OfertasTotales == null || OfertasTotales.size() == 0)
 			throw new OfertadorException(
 					950020,
-					"No tiene ofertas diponibles debido a incompatibilidades entre ofertas y sus bolsas/plan contratado",
+					"No tiene ofertas disponibles debido a incompatibilidades entre ofertas y sus bolsas/plan contratado",
 					new Exception(
 							"Las Ofertas no son compatibles con la Matriz de Incompatibilidad"));
 
@@ -594,6 +594,32 @@ public class ObtenerOfertaHelper {
 	}
 		return ofertasGeneralesCatalogo;
 	}
+	
+	
+	public List<Oferta> aplicarTeneciaDeEquipo(
+			List<Oferta> Ofertas,int numeroCelular) {
+		
+		try{
+//		 Oferta oferta = 	Ofertas.get(0);	
+//		 String tenenciaEquipo = oferta
+		//Revisar si tiene tenecia de Equipo
+			//Si tiene
+				//Ir a revisar el modelo y marca del cliente a travez del numCelular a ICARO
+				//Buscar coincidencia en Marca, Modelo y Equipo en Tabla en tracking.
+					//Si hay coincidencia
+						//Eliminar Oferta.
+					//No hay Coincidencia
+						//No eliminar, Seguir siguiente Oferta.
+			//No tiene, Sigue al siguiente.
+	
+			
+		}catch(Exception e){
+			
+			
+		}
+		
+		return null;
+	}
 
 	public ObtenerOfertaHelper() {
 
@@ -626,5 +652,6 @@ public class ObtenerOfertaHelper {
 	// private static final java.util.logging.Logger logger =
 	// java.util.logging.Logger
 	// .getLogger(ObtenerOfertaHelper.class.getName());
+
 
 }
